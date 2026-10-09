@@ -179,9 +179,12 @@
     <string name="retention_days">%1$d Tage</string>
     <string name="retention_hint">Ältere Einträge werden einmal täglich gelöscht. Benachrichtigungen mit laufender Erinnerung bleiben, bis sie fällig sind. Trends rechnet nur mit dem, was noch da ist.</string>
     <string name="rule_action_silence">stumm schalten</string>
-    <string name="rule_silence_hint">Android startet den Ton, sobald eine Benachrichtigung eintrifft, noch bevor eine App eingreifen kann. Ein kurzer Ton kann also noch durchkommen. ReNotify bricht ihn ab, nimmt das Banner weg und lässt die Benachrichtigung lautlos in der Statusleiste.</string>
+    <string name="rule_silence_hint">Die Benachrichtigung bleibt, ohne Ton und Vibration. Mit „Echtes Stummschalten“ in den Einstellungen klingelt gar nichts; ohne startet Android den Ton, bevor eine App eingreifen kann, ein kurzer Ton kann also durchkommen. Der Push-up-Schalter am Zahnrad der Regel entscheidet, ob noch ein Banner erscheint.</string>
     <string name="telemetry_card_title">ReNotify verbessern helfen?</string>
     <string name="telemetry_card_body">ReNotify kann einmal täglich einen kurzen Bericht an unseren eigenen Server schicken: eine zufällige ID, App- und Android-Version, Sprache, wie viele Benachrichtigungen gespeichert sind, und Absturzberichte. Nie, was in deinen Benachrichtigungen steht. Ohne deine Zustimmung wird nichts gesendet, und du kannst es jederzeit in den Einstellungen ändern.</string>
     <string name="telemetry_allow">Erlauben</string>
     <string name="telemetry_deny">Nein danke</string>
+    <string name="settings_real_silence">Echtes Stummschalten (Beta)</string>
+    <string name="settings_real_silence_hint">ReNotify spielt Ton und Vibration jeder Benachrichtigung selbst ab, damit eine Stumm-Regel greift, bevor etwas klingelt. Anrufe sind nie betroffen, und läuft ReNotify nicht, spielt Android die Töne wieder selbst.</string>
+    <string name="settings_real_silence_waiting">Noch nicht aktiv: ReNotify braucht den Benachrichtigungszugriff und muss laufen.</string>
 </resources>

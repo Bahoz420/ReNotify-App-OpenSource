@@ -27,15 +27,39 @@ class ReNotifyListenerService : NotificationListenerService() {
     /** Keys this service cancelled to silence them, see [onNotificationRemoved]. */
     private val ownCancels: MutableSet<String> = Collections.synchronizedSet(HashSet())
 
-    override fun onNotificationPosted(sbn: StatusBarNotification) {
-        val notification = sbn.notification ?: return
-        if (isIgnored(sbn, notification)) return
+    /**
+     * Keys currently in the shade, to tell a new notification from an update
+     * of one already there ("alert only once" applies to updates only).
+     */
+    private val activeKeys: MutableSet<String> = Collections.synchronizedSet(HashSet())
+
+    override fun onNotificationPosted(sbn: StatusBarNotification, rankingMap: RankingMap) {
+        val isUpdate = !activeKeys.add(sbn.key)
+        val quiet = record(sbn)
+        // With real silence on, Android plays nothing; everything a rule did
+        // not silence gets its sound from here, ReNotify's own notifications
+        // included.
+        if (!quiet && takeoverActive()) {
+            val ranking = Ranking()
+            if (rankingMap.getRanking(sbn.key, ranking)) {
+                AlertTakeover.alert(this, sbn, ranking, isUpdate)
+            }
+        }
+    }
+
+    /**
+     * Archives the notification and applies rules and the status bar filter.
+     * Returns true when one of them decided it must not make a sound.
+     */
+    private fun record(sbn: StatusBarNotification): Boolean {
+        val notification = sbn.notification ?: return false
+        if (isIgnored(sbn, notification)) return false
 
         // Boost: remember the original click action while it is still alive so
         // a resend within the window opens the exact original destination.
         IntentCache.put(sbn.key, notification.contentIntent)
 
-        val (title, text) = contentOf(notification) ?: return
+        val (title, text) = contentOf(notification) ?: return false
         val appLabel = labelOf(sbn.packageName)
 
         val isProtected = isProtected(sbn.packageName, notification)
@@ -45,11 +69,20 @@ class ReNotifyListenerService : NotificationListenerService() {
         val rule =
             if (isProtected) null else RulesEngine.match(this, sbn.packageName, title, text)
 
-        // A silence match swaps the original for a quiet copy, see below. When
-        // ReNotify itself may not post, there would be no copy, and silencing
-        // would turn into hiding; then the original simply stays.
-        val silencingRule = rule?.takeIf {
-            it.silences && Reposter.canPost(this, Delivery.SILENT)
+        // A silence match keeps the notification and takes its sound away. The
+        // Push up switch on the rule's gear decides whether a banner remains.
+        val silenceRule = rule?.takeIf { it.silences }
+        val keepBanner = silenceRule != null && Delivery.has(silenceRule.delivery, Delivery.PUSH)
+        // With real silence the original made no sound, so it can stay as it
+        // is when a banner is wanted anyway. Otherwise it is swapped for a
+        // quiet copy: cancelling is the one way to stop a sound Android already
+        // started, and the only way to drop a banner. When ReNotify itself may
+        // not post there would be no copy, and silencing would turn into
+        // hiding; then the original simply stays.
+        val copyDelivery = if (keepBanner) Delivery.PUSH else Delivery.SILENT
+        val leaveOriginal = silenceRule != null && keepBanner && takeoverActive()
+        val silencingRule = silenceRule?.takeIf {
+            !leaveOriginal && Reposter.canPost(this, copyDelivery)
         }
         val matchedRule = rule?.takeIf { !it.silences }
 
@@ -110,15 +143,18 @@ class ReNotifyListenerService : NotificationListenerService() {
                 // replaces it in the shade instead of stacking a second one.
                 // It carries the original tap target while that is alive.
                 Reposter.repost(
-                    this@ReNotifyListenerService, listOf(stored), Delivery.SILENT
+                    this@ReNotifyListenerService, listOf(stored), copyDelivery
                 )
-                db.ruleDao().incrementMatch(silencingRule.id)
             }
+            if (silenceRule != null) db.ruleDao().incrementMatch(silenceRule.id)
             HistoryWidget.refresh(this@ReNotifyListenerService)
         }
+        return matchedRule != null || hiddenByShadeFilter || silenceRule != null
     }
 
     override fun onNotificationRemoved(sbn: StatusBarNotification) {
+        activeKeys.remove(sbn.key)
+        AlertTakeover.stopFor(sbn.key)
         if (sbn.packageName == packageName) return
         // Taken away by a silence rule, not by the user: the notification is
         // still in the shade as a quiet copy, so it was not removed.
@@ -251,8 +287,40 @@ class ReNotifyListenerService : NotificationListenerService() {
         isConnected = true
         instance = this
         Reposter.ensureChannel(this)
+        try {
+            activeKeys.clear()
+            activeNotifications?.forEach { activeKeys.add(it.key) }
+        } catch (_: Exception) {
+        }
+        // Android drops a listener's hints when it disconnects, so real
+        // silence is asked for again on every connect.
+        applyHints()
         // Catch up on everything that arrived while the process was gone.
         scope.launch { sweep() }
+    }
+
+    /** Asks for, or gives back, the sound and vibration of notifications. */
+    private fun applyHints() {
+        try {
+            requestListenerHints(
+                if (AlertTakeover.isEnabled(this)) HINT_HOST_DISABLE_NOTIFICATION_EFFECTS else 0
+            )
+        } catch (_: Exception) {
+        }
+    }
+
+    /**
+     * True only while Android actually holds back the sounds. The setting alone
+     * is not enough: before the listener is connected, nothing is held back,
+     * and playing sounds then would make every notification ring twice.
+     */
+    private fun takeoverActive(): Boolean {
+        if (!AlertTakeover.isEnabled(this)) return false
+        return try {
+            currentListenerHints and HINT_HOST_DISABLE_NOTIFICATION_EFFECTS != 0
+        } catch (_: Exception) {
+            false
+        }
     }
 
     override fun onListenerDisconnected() {
@@ -304,6 +372,14 @@ class ReNotifyListenerService : NotificationListenerService() {
             val service = instance ?: return
             service.scope.launch { service.sweep() }
         }
+
+        /** Applies the real silence setting right away, if the listener is connected. */
+        fun applyAlertTakeover(@Suppress("UNUSED_PARAMETER") context: Context) {
+            instance?.applyHints()
+        }
+
+        /** Whether real silence is in effect right now, for the Settings screen. */
+        fun alertTakeoverActive(): Boolean = instance?.takeoverActive() ?: false
 
         fun rebind(context: Context) {
             requestRebind(ComponentName(context, ReNotifyListenerService::class.java))

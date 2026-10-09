@@ -51,7 +51,9 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.renotify.app.R
+import com.renotify.app.service.AlertTakeover
 import com.renotify.app.service.ListenerGuard
+import com.renotify.app.service.ReNotifyListenerService
 import com.renotify.app.telemetry.Telemetry
 import com.renotify.app.data.ReNotifyDatabase
 import com.renotify.app.data.Retention
@@ -79,6 +81,8 @@ fun SettingsScreen(onBack: () -> Unit) {
     var telemetryEnabled by remember { mutableStateOf(Telemetry.isEnabled(context)) }
     var retentionDays by remember { mutableStateOf(Retention.days(context)) }
     var showRetention by remember { mutableStateOf(false) }
+    var realSilence by remember { mutableStateOf(AlertTakeover.isEnabled(context)) }
+    var realSilenceActive by remember { mutableStateOf(ReNotifyListenerService.alertTakeoverActive()) }
     val scope = rememberCoroutineScope()
     // Every feature is free in this edition, nothing is ever locked.
     val hasProAccess = true
@@ -87,6 +91,7 @@ fun SettingsScreen(onBack: () -> Unit) {
     LifecycleResumeEffect(Unit) {
         batteryExempt = ListenerGuard.isBatteryExempt(context)
         listenerGranted = ListenerGuard.hasAccess(context)
+        realSilenceActive = ReNotifyListenerService.alertTakeoverActive()
         onPauseOrDispose { }
     }
 
@@ -320,6 +325,41 @@ fun SettingsScreen(onBack: () -> Unit) {
                 value = retentionLabel(retentionDays),
             ) {
                 showRetention = true
+            }
+            RowDivider()
+            Column(Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        stringResource(R.string.settings_real_silence),
+                        style = IosType.body,
+                        color = palette.label,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Switch(
+                        checked = realSilence,
+                        onCheckedChange = { on ->
+                            realSilence = on
+                            AlertTakeover.setEnabled(context, on)
+                            realSilenceActive = ReNotifyListenerService.alertTakeoverActive()
+                        }
+                    )
+                }
+                Text(
+                    stringResource(R.string.settings_real_silence_hint),
+                    style = IosType.footnote,
+                    color = palette.secondaryLabel
+                )
+                // Switched on but not in effect: the listener is not connected,
+                // or the phone did not grant the request. Rules then still only
+                // cut sounds off, and the user should know that.
+                if (realSilence && !realSilenceActive) {
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        stringResource(R.string.settings_real_silence_waiting),
+                        style = IosType.footnote,
+                        color = palette.red
+                    )
+                }
             }
         }
 

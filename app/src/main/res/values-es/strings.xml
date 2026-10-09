@@ -179,9 +179,12 @@
     <string name="retention_days">%1$d días</string>
     <string name="retention_hint">Las entradas más antiguas se borran una vez al día. Las notificaciones con un recordatorio pendiente se quedan hasta que llegue. Tendencias solo cuenta lo que queda.</string>
     <string name="rule_action_silence">silenciarla</string>
-    <string name="rule_silence_hint">Android inicia el sonido en cuanto llega una notificación, antes de que ninguna app pueda intervenir, así que aún puede sonar un tono corto. ReNotify lo corta, quita el banner y deja la notificación en silencio en la barra de estado.</string>
+    <string name="rule_silence_hint">La notificación se queda, sin sonido ni vibración. Con "Silencio real" en Ajustes no suena nada; sin él, Android inicia el sonido antes de que ninguna app pueda intervenir, así que puede sonar un tono corto. El interruptor Push del engranaje de la regla decide si aún aparece un banner.</string>
     <string name="telemetry_card_title">¿Nos ayudas a mejorar ReNotify?</string>
     <string name="telemetry_card_body">Una vez al día ReNotify puede enviar un breve informe a nuestro propio servidor: un ID aleatorio, la versión de la app y de Android, el idioma, cuántas notificaciones hay guardadas e informes de fallos. Nunca lo que dicen tus notificaciones. No se envía nada sin tu permiso, y puedes cambiarlo en Ajustes cuando quieras.</string>
     <string name="telemetry_allow">Permitir</string>
     <string name="telemetry_deny">No, gracias</string>
+    <string name="settings_real_silence">Silencio real (beta)</string>
+    <string name="settings_real_silence_hint">ReNotify reproduce él mismo el sonido y la vibración de cada notificación, así una regla de silencio actúa antes de que algo suene. Las llamadas nunca se ven afectadas, y si ReNotify deja de funcionar, Android vuelve a reproducir los sonidos.</string>
+    <string name="settings_real_silence_waiting">Aún no está activo: ReNotify necesita acceso a las notificaciones y tiene que estar en marcha.</string>
 </resources>

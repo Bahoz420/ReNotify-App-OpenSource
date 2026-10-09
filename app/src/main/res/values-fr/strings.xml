@@ -179,9 +179,12 @@
     <string name="retention_days">%1$d jours</string>
     <string name="retention_hint">Les entrées plus anciennes sont supprimées une fois par jour. Les notifications avec un rappel en attente restent jusqu\'à son heure. Tendances ne compte que ce qui reste.</string>
     <string name="rule_action_silence">la mettre en silencieux</string>
-    <string name="rule_silence_hint">Android lance le son dès qu\'une notification arrive, avant qu\'une appli puisse intervenir : un bref son peut donc encore passer. ReNotify le coupe, retire la bannière et garde la notification en silence dans la barre d\'état.</string>
+    <string name="rule_silence_hint">La notification reste, sans son ni vibration. Avec « Silence réel » dans les Réglages, rien ne sonne ; sans lui, Android lance le son avant qu\'une appli puisse intervenir, un bref son peut donc passer. L\'interrupteur Push de la roue dentée de la règle décide si une bannière s\'affiche encore.</string>
     <string name="telemetry_card_title">Aider à améliorer ReNotify ?</string>
     <string name="telemetry_card_body">Une fois par jour, ReNotify peut envoyer un court rapport à notre propre serveur : un identifiant aléatoire, la version de l\'appli et d\'Android, la langue, le nombre de notifications enregistrées et les rapports de plantage. Jamais le contenu de vos notifications. Rien n\'est envoyé sans votre accord, et vous pouvez le modifier à tout moment dans les Réglages.</string>
     <string name="telemetry_allow">Autoriser</string>
     <string name="telemetry_deny">Non merci</string>
+    <string name="settings_real_silence">Silence réel (bêta)</string>
+    <string name="settings_real_silence_hint">ReNotify joue lui-même le son et la vibration de chaque notification, pour qu\'une règle de silence agisse avant que quoi que ce soit ne sonne. Les appels ne sont jamais concernés, et si ReNotify s\'arrête, Android rejoue les sons.</string>
+    <string name="settings_real_silence_waiting">Pas encore actif : ReNotify a besoin de l\'accès aux notifications et doit être en cours d\'exécution.</string>
 </resources>

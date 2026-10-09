@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.8.7
+
+- New, in beta: "Real silence" in Settings. ReNotify plays the sound and
+  vibration of notifications itself, so rules that hide or silence a
+  notification take effect before anything rings. Calls are never affected,
+  and if ReNotify stops running, Android plays the sounds again.
+- The Push up switch on a rule's gear now works for silence rules: on, the
+  notification still shows a banner without sound; off, it lands quietly in
+  the notification bar.
+
 ## 1.8.6
 
 First open source release, with a signed APK on the Releases page.

@@ -181,9 +181,12 @@
     <string name="retention_days">%1$d days</string>
     <string name="retention_hint">Entries older than this are deleted once a day. Reminders that are still pending stay until they fire. Trends only counts what is left.</string>
     <string name="rule_action_silence">silence it</string>
-    <string name="rule_silence_hint">Android starts the sound the moment a notification arrives, before any app can step in, so a short tone may still get through. ReNotify cuts it off, drops the banner and keeps the notification quietly in your status bar.</string>
+    <string name="rule_silence_hint">The notification stays, without sound or vibration. With "Real silence" in Settings nothing rings at all; without it Android starts the sound before any app can step in, so a short tone may get through. The Push up switch on the rule\'s gear decides whether a banner still shows.</string>
     <string name="telemetry_card_title">Help make ReNotify better?</string>
     <string name="telemetry_card_body">Once a day ReNotify can send a short report to our own server: a random ID, app and Android version, language, how many notifications are stored, and crash reports. Never what your notifications say. Nothing is sent unless you agree, and you can change it in Settings at any time.</string>
     <string name="telemetry_allow">Allow</string>
     <string name="telemetry_deny">No thanks</string>
+    <string name="settings_real_silence">Real silence (beta)</string>
+    <string name="settings_real_silence_hint">ReNotify plays the sound and vibration of every notification itself, so a silence rule takes effect before anything rings. Calls are never affected, and if ReNotify stops running, Android plays the sounds again.</string>
+    <string name="settings_real_silence_waiting">Not active yet: ReNotify needs notification access and has to be running.</string>
 </resources>

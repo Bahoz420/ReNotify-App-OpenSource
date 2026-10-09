@@ -179,9 +179,12 @@
     <string name="retention_days">%1$d dias</string>
     <string name="retention_hint">As entradas mais antigas são apagadas uma vez por dia. As notificações com um lembrete pendente ficam até ele disparar. Tendências só conta o que resta.</string>
     <string name="rule_action_silence">silenciá-la</string>
-    <string name="rule_silence_hint">O Android inicia o som assim que chega uma notificação, antes de qualquer app poder intervir, por isso um som curto ainda pode passar. O ReNotify interrompe-o, retira o banner e mantém a notificação em silêncio na barra de estado.</string>
+    <string name="rule_silence_hint">A notificação fica, sem som nem vibração. Com "Silêncio real" nas Definições nada toca; sem ele, o Android inicia o som antes de qualquer app poder intervir, por isso um som curto pode passar. O interruptor Push da engrenagem da regra decide se ainda aparece um banner.</string>
     <string name="telemetry_card_title">Ajudar a melhorar o ReNotify?</string>
     <string name="telemetry_card_body">Uma vez por dia o ReNotify pode enviar um breve relatório para o nosso próprio servidor: um ID aleatório, a versão da app e do Android, o idioma, quantas notificações estão guardadas e relatórios de falhas. Nunca o que as tuas notificações dizem. Nada é enviado sem o teu consentimento, e podes mudar isso nas Definições a qualquer momento.</string>
     <string name="telemetry_allow">Permitir</string>
     <string name="telemetry_deny">Não, obrigado</string>
+    <string name="settings_real_silence">Silêncio real (beta)</string>
+    <string name="settings_real_silence_hint">O ReNotify reproduz ele próprio o som e a vibração de cada notificação, para que uma regra de silêncio atue antes de algo tocar. As chamadas nunca são afetadas, e se o ReNotify parar, o Android volta a reproduzir os sons.</string>
+    <string name="settings_real_silence_waiting">Ainda não está ativo: o ReNotify precisa de acesso às notificações e tem de estar em execução.</string>
 </resources>

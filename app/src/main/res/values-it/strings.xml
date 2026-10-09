@@ -179,9 +179,12 @@
     <string name="retention_days">%1$d giorni</string>
     <string name="retention_hint">Le voci più vecchie vengono eliminate una volta al giorno. Le notifiche con un promemoria in sospeso restano finché non scatta. Tendenze conta solo ciò che resta.</string>
     <string name="rule_action_silence">silenziala</string>
-    <string name="rule_silence_hint">Android avvia il suono appena arriva una notifica, prima che qualsiasi app possa intervenire, quindi un breve suono può ancora passare. ReNotify lo interrompe, toglie il banner e lascia la notifica in silenzio nella barra di stato.</string>
+    <string name="rule_silence_hint">La notifica resta, senza suono né vibrazione. Con \"Silenzio reale\" nelle Impostazioni non suona nulla; senza, Android avvia il suono prima che qualsiasi app possa intervenire, quindi un breve suono può passare. L\'interruttore Push dell\'ingranaggio della regola decide se appare ancora un banner.</string>
     <string name="telemetry_card_title">Ci aiuti a migliorare ReNotify?</string>
     <string name="telemetry_card_body">Una volta al giorno ReNotify può inviare un breve rapporto al nostro server: un ID casuale, la versione dell\'app e di Android, la lingua, quante notifiche sono salvate e i rapporti sugli arresti anomali. Mai il contenuto delle tue notifiche. Senza il tuo consenso non viene inviato nulla, e puoi cambiarlo quando vuoi nelle Impostazioni.</string>
     <string name="telemetry_allow">Consenti</string>
     <string name="telemetry_deny">No, grazie</string>
+    <string name="settings_real_silence">Silenzio reale (beta)</string>
+    <string name="settings_real_silence_hint">ReNotify riproduce da sé il suono e la vibrazione di ogni notifica, così una regola di silenzio agisce prima che qualcosa suoni. Le chiamate non sono mai coinvolte, e se ReNotify si ferma, Android torna a riprodurre i suoni.</string>
+    <string name="settings_real_silence_waiting">Non ancora attivo: ReNotify ha bisogno dell\'accesso alle notifiche e deve essere in esecuzione.</string>
 </resources>
