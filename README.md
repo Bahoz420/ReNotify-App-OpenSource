@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/banner.png" alt="ReNotify: never lose a notification again. History, resend, rules." width="720">
+</p>
+
 # ReNotify
 
 A notification history for Android. ReNotify keeps every notification you
@@ -146,5 +150,6 @@ reviewed and tested before it ships.
 The code is licensed under the GNU General Public License v3.0, see
 [LICENSE](LICENSE). Copyright Fluxera LLC.
 
-The name ReNotify and the app icon are not covered by that license. If you
-publish a modified version, give it a different name, icon and application id.
+The name ReNotify, the app icon and the images in `docs/` (icon and banner)
+are not covered by that license. If you publish a modified version, give it a
+different name, icon and application id.
