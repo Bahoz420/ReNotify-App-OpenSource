@@ -8,6 +8,20 @@ This is the open source edition. Every feature is free, there are no purchases,
 no banners and no advertising, and it sends nothing anywhere unless whoever
 built it chose a statistics server (see [Statistics](#statistics)).
 
+## Download
+
+Signed APKs are on the
+[Releases page](https://github.com/Bahoz420/ReNotify-App-OpenSource/releases).
+The app id is `com.renotify.oss`, so it installs next to the Play Store
+edition instead of replacing it.
+
+To check that an APK really comes from us, compare its signing certificate
+(`apksigner verify --print-certs ReNotify-*.apk`) with this SHA-256:
+
+```
+1C:BA:8A:C6:70:BE:0C:D3:64:AE:B8:87:33:6C:48:FE:36:85:E1:81:91:5A:09:26:1A:C5:C2:85:73:64:EC:A8
+```
+
 ## What it does
 
 - **History.** App, title, full text and time of every incoming notification,
@@ -78,8 +92,8 @@ consent it sends, about once a day, `POST /api/ping` with this JSON:
 ```json
 {
   "device": "random UUID created by the app",
-  "version": "1.8.5",
-  "versionCode": 19,
+  "version": "1.8.6",
+  "versionCode": 20,
   "sdk": 36,
   "locale": "de-DE",
   "notifTotal": 1234
