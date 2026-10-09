@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ReNotify</string>
+
+    <string name="action_select">Select</string>
+    <string name="action_done">Done</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="search_hint">Search</string>
+    <string name="resend_all">Resend all</string>
+    <string name="section_history">HISTORY</string>
+    <string name="badge_removed">Removed</string>
+    <string name="action_resend">Resend</string>
+    <string name="select_all">Select all</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_send">Send</string>
+    <string name="action_send_count">Send (%1$d)</string>
+    <string name="snackbar_sent_one">1 notification resent</string>
+    <string name="snackbar_sent_many">%1$d notifications resent</string>
+
+    <string name="empty_none_title">No notifications</string>
+    <string name="empty_none_sub">New notifications will appear here automatically.</string>
+    <string name="empty_noaccess_title">Access not allowed yet</string>
+    <string name="empty_noaccess_sub">Please allow notification access first.</string>
+
+    <string name="perm_title">Notification access required</string>
+    <string name="perm_body">ReNotify needs access to your notifications to build the history.</string>
+    <string name="perm_hint">If the toggle is blocked for security reasons: tap “Open app info” below, then the ⋮ menu in the top right, choose “Allow restricted settings” and try again.</string>
+    <string name="allow_access">Allow access</string>
+    <string name="open_app_info">Open app info</string>
+
+
+    <string name="onb_title1">Unlock security setting</string>
+    <string name="onb_body1">ReNotify saves notifications locally.\nNothing is uploaded or shared.</string>
+    <string name="onb_steps">1. Open the app info\n2. Tap the ⋮ menu top right\n3. Allow restricted settings</string>
+    <string name="onb_continue">Continue</string>
+    <string name="onb_title2">Allow notification access</string>
+    <string name="onb_body2">Enable ReNotify on the next screen.\nYour history starts right after.</string>
+    <string name="onb_later">Later</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_general">GENERAL</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_notification_access">Notification access</string>
+    <string name="settings_section_about">ABOUT</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_privacy">Privacy policy</string>
+    <string name="settings_terms">Terms of use</string>
+    <string name="settings_contact">Contact</string>
+
+    <string name="action_snooze">Remind me later</string>
+    <string name="snooze_1h">In 1 hour</string>
+    <string name="snooze_evening">This evening</string>
+    <string name="snooze_morning">Tomorrow morning</string>
+    <string name="snooze_custom">Pick a time…</string>
+    <string name="snooze_set">Reminder set</string>
+    <string name="settings_export">Export history (CSV)</string>
+    <string name="settings_filter">App filter</string>
+    <string name="filter_hint">Disabled apps are not recorded.</string>
+
+    <string name="settings_demo">Add demo notifications</string>
+    <string name="demo_added">Demo notifications added</string>
+    <string name="compose_title">Create notification</string>
+    <string name="compose_field_title">Title</string>
+    <string name="compose_field_text">Message</string>
+    <string name="compose_icon">Icon</string>
+    <string name="compose_date">Date</string>
+    <string name="compose_time">Time</string>
+    <string name="demo_wa_title">Lisa</string>
+    <string name="demo_wa_text">Are you on your way? 😊</string>
+    <string name="demo_mail_title">Your invoice is ready</string>
+    <string name="demo_mail_text">Invoice #4711: €29.99, due August 20</string>
+    <string name="demo_insta_title">anna.k</string>
+    <string name="demo_insta_text">liked your photo.</string>
+    <string name="demo_amazon_title">Your package arrives today</string>
+    <string name="demo_amazon_text">Delivery between 2 PM and 6 PM</string>
+    <string name="demo_bank_title">Money received</string>
+    <string name="demo_bank_text">You received €100.00 from Max</string>
+    <string name="demo_spotify_title">New playlist for you</string>
+    <string name="demo_spotify_text">Your Daily Mix is ready</string>
+
+    <string name="channel_name">Restored notifications</string>
+    <string name="channel_desc">Old notifications pushed again</string>
+
+    <string name="page_of">Page %1$d of %2$d</string>
+
+    <string name="tab_history">History</string>
+    <string name="tab_snoozed">Snoozed</string>
+    <string name="snoozed_empty_title">No scheduled notifications</string>
+    <string name="snoozed_empty_sub">Snoozed and self-created notifications appear here.</string>
+    <string name="scheduled_for">Scheduled for %1$s</string>
+    <string name="action_send_now">Send now</string>
+    <string name="action_cancel_reminder">Cancel reminder</string>
+
+
+    <string name="tab_trends">Trends</string>
+    <string name="stats_total">notifications stored</string>
+    <string name="stats_per_day">Ø %1$s per day</string>
+    <string name="stats_vs_week">vs previous week</string>
+    <string name="stats_top_apps">Most frequent apps</string>
+    <string name="stats_others">Others</string>
+    <string name="stats_by_hour">Time of day</string>
+    <string name="stats_peak">Most notifications around %1$s</string>
+    <string name="stats_week">Last 7 days</string>
+    <string name="stats_empty_title">No data yet</string>
+    <string name="stats_empty_sub">Trends appear as soon as notifications come in.</string>
+
+    <string name="battery_title">Allow background activity</string>
+    <string name="battery_body">Your phone may pause ReNotify to save battery, which silently stops the history. Exclude ReNotify from battery optimization so nothing gets lost.</string>
+    <string name="battery_allow">Allow</string>
+    <string name="settings_battery">Battery optimization</string>
+    <string name="battery_state_ok">Unrestricted</string>
+    <string name="battery_state_bad">Restricted</string>
+
+    <string name="settings_telemetry">Share usage statistics</string>
+
+
+
+    <string name="boost_hint">Boost: tapping opens the original destination (up to 6 hours)</string>
+
+    <string name="tab_rules">Rules</string>
+    <string name="rules_empty_title">No rules yet</string>
+    <string name="rules_empty_sub">Hide unwanted notifications automatically. They stay in your history.</string>
+    <string name="rule_new">New rule</string>
+    <string name="rule_edit">Edit rule</string>
+    <string name="rule_save">Save</string>
+    <string name="rule_delete">Delete rule</string>
+    <string name="rule_blocked_count">%1$d notifications caught</string>
+    <string name="rule_any_app">Any app</string>
+    <string name="rule_sentence_when">When a notification arrives from</string>
+    <string name="rule_sentence_that">that</string>
+    <string name="rule_mode_any">says anything</string>
+    <string name="rule_mode_contains">contains</string>
+    <string name="rule_mode_not">does not contain</string>
+    <string name="rule_time_any">at any time</string>
+    <string name="rule_time_between">between %1$s and %2$s</string>
+    <string name="rule_sentence_then">then</string>
+    <string name="rule_action_hide">hide it</string>
+    <string name="rule_add_filter">Add</string>
+    <string name="rule_keyword_hint">Word or phrase</string>
+    <string name="badge_blocked">Blocked</string>
+    <string name="rule_search_apps">Search apps</string>
+    <string name="rule_scope_both">in title or text</string>
+    <string name="rule_scope_title">in the title</string>
+    <string name="rule_scope_text">in the text</string>
+    <string name="delivery_title">Delivery</string>
+    <string name="delivery_push">Push up</string>
+    <string name="delivery_push_hint">Show as a banner on top of the screen</string>
+    <string name="delivery_sound">Sound</string>
+    <string name="delivery_sound_hint">Play the notification sound</string>
+    <string name="delivery_vibrate">Vibrate</string>
+    <string name="delivery_vibrate_hint">Vibrate on arrival</string>
+    <string name="delivery_flash">Flashlight</string>
+    <string name="delivery_flash_hint">Blink the torch three times</string>
+    <string name="delivery_silent">Silent</string>
+    <string name="section_apps">APPS</string>
+    <string name="widget_hint">Tap to resend</string>
+    <string name="widget_empty">No notifications yet</string>
+    <string name="widget_description">Your latest notifications. One tap sends one again.</string>
+    <string name="filter_tab_record">Record</string>
+    <string name="filter_tab_shade">Status bar</string>
+    <string name="shade_filter_title">Only chosen apps</string>
+    <string name="shade_filter_hint">Apps that are switched off leave the status bar right away and stay in your history.</string>
+    <string name="shade_filter_empty">No app switched on. Every notification is pulled out of the status bar.</string>
+    <string name="shade_filter_protected">Calls, alarms, calendar reminders, navigation, media players and running services always stay visible.</string>
+    <string name="widget_compact_label">ReNotify single row</string>
+    <string name="widget_compact_description">The latest notifications in one row. One tap sends one again.</string>
+    <string name="action_copy">Copy text</string>
+    <string name="action_share">Share text</string>
+    <string name="toast_copied">Text copied</string>
+    <string name="swipe_hint">Swipe right to resend, left to delete.</string>
+    <string name="widget_summary_label">ReNotify count</string>
+    <string name="widget_summary_description">How many notifications arrived today, and which apps sent them. Nothing to read.</string>
+    <string name="widget_summary_today">today</string>
+    <string name="delete_all">Delete all</string>
+    <string name="delete_all_body">%1$d notifications from %2$s will be deleted. This cannot be undone.</string>
+    <string name="delete_all_body_found">%1$d notifications will be deleted. This cannot be undone.</string>
+
+    <string name="settings_retention">Auto-delete history</string>
+    <string name="retention_never">Never</string>
+    <string name="retention_one_day">1 day</string>
+    <string name="retention_days">%1$d days</string>
+    <string name="retention_hint">Entries older than this are deleted once a day. Reminders that are still pending stay until they fire. Trends only counts what is left.</string>
+    <string name="rule_action_silence">silence it</string>
+    <string name="rule_silence_hint">Android starts the sound the moment a notification arrives, before any app can step in, so a short tone may still get through. ReNotify cuts it off, drops the banner and keeps the notification quietly in your status bar.</string>
+    <string name="telemetry_card_title">Help make ReNotify better?</string>
+    <string name="telemetry_card_body">Once a day ReNotify can send a short report to our own server: a random ID, app and Android version, language, how many notifications are stored, and crash reports. Never what your notifications say. Nothing is sent unless you agree, and you can change it in Settings at any time.</string>
+    <string name="telemetry_allow">Allow</string>
+    <string name="telemetry_deny">No thanks</string>
+</resources>

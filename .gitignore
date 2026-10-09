@@ -1,0 +1,16 @@
+*.iml
+.gradle
+.kotlin
+/local.properties
+/.idea
+.DS_Store
+build/
+/captures
+.externalNativeBuild
+.cxx
+
+# Optional local configuration, never committed
+/keystore.properties
+/secrets.properties
+*.jks
+*.keystore

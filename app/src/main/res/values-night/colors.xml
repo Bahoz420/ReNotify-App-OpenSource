@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Widget palette (dark). Mirrors IosDark in ui/theme. -->
+<resources>
+    <color name="widget_bg">#FF1C1C1E</color>
+    <color name="widget_item_bg">#FF2C2C2E</color>
+    <color name="widget_label">#FFFFFFFF</color>
+    <color name="widget_secondary">#FF8D8D93</color>
+    <color name="widget_blue">#FF0A84FF</color>
+</resources>

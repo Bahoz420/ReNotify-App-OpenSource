@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_select">Seleccionar</string>
+    <string name="action_done">Listo</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="search_hint">Buscar</string>
+    <string name="resend_all">Reenviar todo</string>
+    <string name="section_history">HISTORIAL</string>
+    <string name="badge_removed">Eliminada</string>
+    <string name="action_resend">Reenviar</string>
+    <string name="select_all">Seleccionar todo</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_send">Enviar</string>
+    <string name="action_send_count">Enviar (%1$d)</string>
+    <string name="snackbar_sent_one">1 notificación reenviada</string>
+    <string name="snackbar_sent_many">%1$d notificaciones reenviadas</string>
+
+    <string name="empty_none_title">Sin notificaciones</string>
+    <string name="empty_none_sub">Las nuevas notificaciones aparecerán aquí automáticamente.</string>
+    <string name="empty_noaccess_title">Acceso aún no permitido</string>
+    <string name="empty_noaccess_sub">Permite primero el acceso a las notificaciones.</string>
+
+    <string name="perm_title">Se requiere acceso a las notificaciones</string>
+    <string name="perm_body">ReNotify necesita acceso a tus notificaciones para crear el historial.</string>
+    <string name="perm_hint">Si el ajuste está bloqueado por seguridad: toca «Información de la app» abajo, luego ⋮ arriba a la derecha, elige «Permitir ajustes restringidos» y vuelve a intentarlo.</string>
+    <string name="allow_access">Permitir acceso</string>
+    <string name="open_app_info">Información de la app</string>
+
+
+    <string name="onb_title1">Desbloquear el ajuste de seguridad</string>
+    <string name="onb_body1">ReNotify guarda todo localmente.\nNada se sube ni se comparte.</string>
+    <string name="onb_steps">1. Abrir información de la app\n2. Tocar ⋮ arriba a la derecha\n3. Permitir ajustes restringidos</string>
+    <string name="onb_continue">Continuar</string>
+    <string name="onb_title2">Permitir acceso a las notificaciones</string>
+    <string name="onb_body2">Activa ReNotify en la página siguiente.\nTu historial empieza después.</string>
+    <string name="onb_later">Más tarde</string>
+
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_general">GENERAL</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_notification_access">Acceso a notificaciones</string>
+    <string name="settings_section_about">ACERCA DE</string>
+    <string name="settings_version">Versión</string>
+    <string name="settings_privacy">Política de privacidad</string>
+    <string name="settings_terms">Términos de uso</string>
+    <string name="settings_contact">Contacto</string>
+
+    <string name="action_snooze">Recordar más tarde</string>
+    <string name="snooze_1h">En 1 hora</string>
+    <string name="snooze_evening">Esta noche</string>
+    <string name="snooze_morning">Mañana por la mañana</string>
+    <string name="snooze_custom">Elegir hora…</string>
+    <string name="snooze_set">Recordatorio creado</string>
+    <string name="settings_export">Exportar historial (CSV)</string>
+    <string name="settings_filter">Filtro de apps</string>
+    <string name="filter_hint">Las apps desactivadas no se registran.</string>
+
+    <string name="settings_demo">Añadir notificaciones de demostración</string>
+    <string name="demo_added">Notificaciones de demostración añadidas</string>
+    <string name="compose_title">Crear notificación</string>
+    <string name="compose_field_title">Título</string>
+    <string name="compose_field_text">Mensaje</string>
+    <string name="compose_icon">Icono</string>
+    <string name="compose_date">Fecha</string>
+    <string name="compose_time">Hora</string>
+    <string name="demo_wa_title">Lisa</string>
+    <string name="demo_wa_text">¿Ya estás de camino? 😊</string>
+    <string name="demo_mail_title">Tu factura está lista</string>
+    <string name="demo_mail_text">Factura #4711: 29,99 €, vence el 20 de agosto</string>
+    <string name="demo_insta_title">anna.k</string>
+    <string name="demo_insta_text">le gustó tu foto.</string>
+    <string name="demo_amazon_title">Tu paquete llega hoy</string>
+    <string name="demo_amazon_text">Entrega entre las 14:00 y las 18:00</string>
+    <string name="demo_bank_title">Dinero recibido</string>
+    <string name="demo_bank_text">Has recibido 100,00 € de Max</string>
+    <string name="demo_spotify_title">Nueva playlist para ti</string>
+    <string name="demo_spotify_text">Tu Daily Mix está listo</string>
+
+    <string name="channel_name">Notificaciones restauradas</string>
+    <string name="channel_desc">Notificaciones antiguas reenviadas</string>
+
+    <string name="page_of">Página %1$d de %2$d</string>
+
+    <string name="tab_history">Historial</string>
+    <string name="tab_snoozed">Programadas</string>
+    <string name="snoozed_empty_title">No hay notificaciones programadas</string>
+    <string name="snoozed_empty_sub">Las notificaciones pospuestas y creadas por ti aparecerán aquí.</string>
+    <string name="scheduled_for">Programada para %1$s</string>
+    <string name="action_send_now">Enviar ahora</string>
+    <string name="action_cancel_reminder">Cancelar recordatorio</string>
+
+
+    <string name="tab_trends">Tendencias</string>
+    <string name="stats_total">notificaciones guardadas</string>
+    <string name="stats_per_day">Ø %1$s al día</string>
+    <string name="stats_vs_week">vs. semana anterior</string>
+    <string name="stats_top_apps">Apps más frecuentes</string>
+    <string name="stats_others">Otras</string>
+    <string name="stats_by_hour">Hora del día</string>
+    <string name="stats_peak">Más notificaciones hacia las %1$s</string>
+    <string name="stats_week">Últimos 7 días</string>
+    <string name="stats_empty_title">Aún no hay datos</string>
+    <string name="stats_empty_sub">Las tendencias aparecerán en cuanto lleguen notificaciones.</string>
+
+    <string name="battery_title">Permitir actividad en segundo plano</string>
+    <string name="battery_body">Tu teléfono puede pausar ReNotify para ahorrar batería y el historial se detiene sin aviso. Excluye ReNotify de la optimización de batería para no perder nada.</string>
+    <string name="battery_allow">Permitir</string>
+    <string name="settings_battery">Optimización de batería</string>
+    <string name="battery_state_ok">Sin restricciones</string>
+    <string name="battery_state_bad">Restringida</string>
+
+    <string name="settings_telemetry">Compartir estadísticas de uso</string>
+
+
+
+    <string name="boost_hint">Boost: al tocar se abre el destino original (hasta 6 horas)</string>
+
+    <string name="tab_rules">Reglas</string>
+    <string name="rules_empty_title">Aún sin reglas</string>
+    <string name="rules_empty_sub">Oculta notificaciones no deseadas automáticamente. Se conservan en el historial.</string>
+    <string name="rule_new">Nueva regla</string>
+    <string name="rule_edit">Editar regla</string>
+    <string name="rule_save">Guardar</string>
+    <string name="rule_delete">Eliminar regla</string>
+    <string name="rule_blocked_count">%1$d notificaciones interceptadas</string>
+    <string name="rule_any_app">Cualquier app</string>
+    <string name="rule_sentence_when">Cuando llegue una notificación de</string>
+    <string name="rule_sentence_that">que</string>
+    <string name="rule_mode_any">diga cualquier cosa</string>
+    <string name="rule_mode_contains">contenga</string>
+    <string name="rule_mode_not">no contenga</string>
+    <string name="rule_time_any">a cualquier hora</string>
+    <string name="rule_time_between">entre %1$s y %2$s</string>
+    <string name="rule_sentence_then">entonces</string>
+    <string name="rule_action_hide">ocultarla</string>
+    <string name="rule_add_filter">Añadir</string>
+    <string name="rule_keyword_hint">Palabra o frase</string>
+    <string name="badge_blocked">Bloqueada</string>
+    <string name="rule_search_apps">Buscar apps</string>
+    <string name="rule_scope_both">en el título o el texto</string>
+    <string name="rule_scope_title">en el título</string>
+    <string name="rule_scope_text">en el texto</string>
+    <string name="delivery_title">Entrega</string>
+    <string name="delivery_push">Push</string>
+    <string name="delivery_push_hint">Mostrar como banner en la parte superior</string>
+    <string name="delivery_sound">Sonido</string>
+    <string name="delivery_sound_hint">Reproducir el sonido de notificación</string>
+    <string name="delivery_vibrate">Vibración</string>
+    <string name="delivery_vibrate_hint">Vibrar al llegar</string>
+    <string name="delivery_flash">Linterna</string>
+    <string name="delivery_flash_hint">Parpadear la linterna tres veces</string>
+    <string name="delivery_silent">Silencio</string>
+    <string name="section_apps">APPS</string>
+    <string name="widget_hint">Toca para reenviar</string>
+    <string name="widget_empty">Aún no hay notificaciones</string>
+    <string name="widget_description">Tus últimas notificaciones. Un toque reenvía una.</string>
+    <string name="filter_tab_record">Registrar</string>
+    <string name="filter_tab_shade">Barra de estado</string>
+    <string name="shade_filter_title">Solo apps elegidas</string>
+    <string name="shade_filter_hint">Las apps desactivadas salen de la barra de estado al instante y siguen en el historial.</string>
+    <string name="shade_filter_empty">Ninguna app activada. Todas las notificaciones salen de la barra de estado.</string>
+    <string name="shade_filter_protected">Llamadas, alarmas, recordatorios del calendario, navegación, reproductores y servicios en curso siempre quedan visibles.</string>
+    <string name="widget_compact_label">ReNotify una fila</string>
+    <string name="widget_compact_description">Las últimas notificaciones en una fila. Un toque reenvía.</string>
+    <string name="action_copy">Copiar texto</string>
+    <string name="action_share">Compartir texto</string>
+    <string name="toast_copied">Texto copiado</string>
+    <string name="swipe_hint">Desliza a la derecha para reenviar, a la izquierda para borrar.</string>
+    <string name="widget_summary_label">Contador de ReNotify</string>
+    <string name="widget_summary_description">Cuántas notificaciones llegaron hoy y de qué apps. Nada que leer.</string>
+    <string name="widget_summary_today">hoy</string>
+    <string name="delete_all">Borrar todo</string>
+    <string name="delete_all_body">Se borrarán %1$d notificaciones de %2$s. Esto no se puede deshacer.</string>
+    <string name="delete_all_body_found">Se borrarán %1$d notificaciones. Esto no se puede deshacer.</string>
+
+    <string name="settings_retention">Borrar historial automáticamente</string>
+    <string name="retention_never">Nunca</string>
+    <string name="retention_one_day">1 día</string>
+    <string name="retention_days">%1$d días</string>
+    <string name="retention_hint">Las entradas más antiguas se borran una vez al día. Las notificaciones con un recordatorio pendiente se quedan hasta que llegue. Tendencias solo cuenta lo que queda.</string>
+    <string name="rule_action_silence">silenciarla</string>
+    <string name="rule_silence_hint">Android inicia el sonido en cuanto llega una notificación, antes de que ninguna app pueda intervenir, así que aún puede sonar un tono corto. ReNotify lo corta, quita el banner y deja la notificación en silencio en la barra de estado.</string>
+    <string name="telemetry_card_title">¿Nos ayudas a mejorar ReNotify?</string>
+    <string name="telemetry_card_body">Una vez al día ReNotify puede enviar un breve informe a nuestro propio servidor: un ID aleatorio, la versión de la app y de Android, el idioma, cuántas notificaciones hay guardadas e informes de fallos. Nunca lo que dicen tus notificaciones. No se envía nada sin tu permiso, y puedes cambiarlo en Ajustes cuando quieras.</string>
+    <string name="telemetry_allow">Permitir</string>
+    <string name="telemetry_deny">No, gracias</string>
+</resources>

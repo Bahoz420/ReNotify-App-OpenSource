@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One list entry; sits on the widget card like a slightly darker tile. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/widget_item_bg" />
+    <corners android:radius="14dp" />
+</shape>
