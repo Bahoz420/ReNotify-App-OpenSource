@@ -19,6 +19,9 @@
     <string name="empty_none_sub">Le nuove notifiche appariranno qui automaticamente.</string>
     <string name="empty_noaccess_title">Accesso non ancora consentito</string>
     <string name="empty_noaccess_sub">Consenti prima l’accesso alle notifiche.</string>
+    <string name="first_day_title">La cronologia inizia ora</string>
+    <string name="first_day_body">Da ora ReNotify conserva ogni notifica, anche dopo che la scarti. Quello che era ancora nella barra di stato è già qui. Ciò che è stato cancellato prima della configurazione non può recuperarlo nessuna app.</string>
+    <string name="first_day_ok">Ho capito</string>
 
     <string name="perm_title">Richiesto l’accesso alle notifiche</string>
     <string name="perm_body">ReNotify ha bisogno di accedere alle tue notifiche per creare la cronologia.</string>

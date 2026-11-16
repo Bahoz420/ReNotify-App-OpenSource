@@ -1,7 +1,9 @@
 package com.renotify.app.ui
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageInstaller
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings as SystemSettings
@@ -49,15 +51,18 @@ import com.renotify.app.ui.theme.LocalIosPalette
 
 /**
  * First-run flow, two steps:
- * 1. Disclosure + unlock restricted settings via app info (sideloads).
- * 2. Enable notification listener access.
+ * 1. Disclosure + unlock restricted settings via app info, only for an APK
+ *    that was downloaded or copied onto the phone, see [needsRestrictedUnlock].
+ * 2. Enable notification listener access. Without step 1 it carries the
+ *    disclosure itself.
  * The POST_NOTIFICATIONS dialog fires right at the start.
  */
 @Composable
 fun OnboardingScreen(onFinished: () -> Unit) {
     val context = LocalContext.current
     val palette = LocalIosPalette.current
-    var step by remember { mutableIntStateOf(1) }
+    val skipsUnlock = remember { !needsRestrictedUnlock(context) }
+    var step by remember { mutableIntStateOf(if (skipsUnlock) 2 else 1) }
 
     val notificationPermission = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -110,7 +115,12 @@ fun OnboardingScreen(onFinished: () -> Unit) {
         )
         Spacer(Modifier.height(14.dp))
         Text(
-            stringResource(if (step == 1) R.string.onb_body1 else R.string.onb_body2),
+            when {
+                step == 1 -> stringResource(R.string.onb_body1)
+                skipsUnlock -> stringResource(R.string.onb_body1) + "\n\n" +
+                    stringResource(R.string.onb_body2)
+                else -> stringResource(R.string.onb_body2)
+            },
             style = IosType.subhead,
             color = palette.secondaryLabel,
             textAlign = TextAlign.Center,
@@ -172,5 +182,26 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                 .padding(8.dp)
         )
         Spacer(Modifier.height(14.dp))
+    }
+}
+
+/**
+ * Since Android 13 the system locks notification access for an app installed
+ * from a downloaded or local APK until "Allow restricted settings" is tapped
+ * in its app info. An install from a store never meets that lock, and before
+ * Android 13 it does not exist. Showing the unlock step to everyone sent Play
+ * users to app info to look for a menu entry they do not have.
+ *
+ * When the install source cannot be read the step stays, as it always was.
+ */
+private fun needsRestrictedUnlock(context: Context): Boolean {
+    if (Build.VERSION.SDK_INT < 33) return false
+    return try {
+        val source = context.packageManager
+            .getInstallSourceInfo(context.packageName).packageSource
+        source == PackageInstaller.PACKAGE_SOURCE_LOCAL_FILE ||
+            source == PackageInstaller.PACKAGE_SOURCE_DOWNLOADED_FILE
+    } catch (_: Exception) {
+        true
     }
 }

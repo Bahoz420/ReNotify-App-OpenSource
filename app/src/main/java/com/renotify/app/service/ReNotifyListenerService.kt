@@ -283,6 +283,52 @@ class ReNotifyListenerService : NotificationListenerService() {
         }
     }
 
+    /**
+     * Copies what is already in the status bar into the history, once, on the
+     * first connect after setup. Before this the history started empty, and
+     * whoever set ReNotify up because of a notification they had just seen
+     * found nothing there.
+     *
+     * Only into an empty history: after an update, or a reinstall that kept
+     * its data, the flag is set without copying, so entries someone deleted
+     * do not come back. Nothing is cancelled or judged here; [sweep] runs
+     * right after and applies rules and the status bar filter as always.
+     */
+    private suspend fun importShadeOnce() {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        if (prefs.getBoolean(KEY_SHADE_IMPORTED, false)) return
+        val active = try {
+            activeNotifications
+        } catch (_: Exception) {
+            null
+        } ?: return
+        val dao = ReNotifyDatabase.get(this).notificationDao()
+        var copied = 0
+        if (dao.count() == 0) {
+            for (sbn in active.sortedBy { it.postTime }) {
+                val notification = sbn.notification ?: continue
+                if (isIgnored(sbn, notification)) continue
+                val (title, text) = contentOf(notification) ?: continue
+                // Posted while this loop ran, then already stored as usual.
+                if (dao.findActiveByKey(sbn.key) != null) continue
+                IntentCache.put(sbn.key, notification.contentIntent)
+                dao.insert(
+                    StoredNotification(
+                        sbnKey = sbn.key,
+                        packageName = sbn.packageName,
+                        appLabel = labelOf(sbn.packageName),
+                        title = title,
+                        text = text,
+                        postedAt = sbn.postTime,
+                    )
+                )
+                copied++
+            }
+        }
+        prefs.edit().putBoolean(KEY_SHADE_IMPORTED, true).apply()
+        if (copied > 0) HistoryWidget.refresh(this)
+    }
+
     override fun onListenerConnected() {
         isConnected = true
         instance = this
@@ -295,8 +341,11 @@ class ReNotifyListenerService : NotificationListenerService() {
         // Android drops a listener's hints when it disconnects, so real
         // silence is asked for again on every connect.
         applyHints()
-        // Catch up on everything that arrived while the process was gone.
-        scope.launch { sweep() }
+        scope.launch {
+            importShadeOnce()
+            // Catch up on everything that arrived while the process was gone.
+            sweep()
+        }
     }
 
     /** Asks for, or gives back, the sound and vibration of notifications. */
@@ -338,6 +387,9 @@ class ReNotifyListenerService : NotificationListenerService() {
     }
 
     companion object {
+        /** Set once the status bar was copied into the history, see [importShadeOnce]. */
+        private const val KEY_SHADE_IMPORTED = "shade_imported"
+
         /** Categories a rule must never hide, no matter how broad it is. */
         private val PROTECTED_CATEGORIES = setOf(
             Notification.CATEGORY_ALARM,

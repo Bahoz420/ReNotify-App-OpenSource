@@ -19,6 +19,9 @@
     <string name="empty_none_sub">Les nouvelles notifications apparaîtront ici automatiquement.</string>
     <string name="empty_noaccess_title">Accès non autorisé</string>
     <string name="empty_noaccess_sub">Autorisez d’abord l’accès aux notifications.</string>
+    <string name="first_day_title">Votre historique commence maintenant</string>
+    <string name="first_day_body">Désormais, ReNotify garde chaque notification, même après l’avoir balayée. Ce qui était encore dans la barre d’état est déjà là. Ce qui a été effacé avant la configuration, aucune app ne peut le récupérer.</string>
+    <string name="first_day_ok">Compris</string>
 
     <string name="perm_title">Accès aux notifications requis</string>
     <string name="perm_body">ReNotify a besoin d’accéder à vos notifications pour créer l’historique.</string>

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.9.1
+
+- Right after setup the history already holds what was in the status bar.
+  Before, it started empty. This happens once, and only into an empty history.
+- A card on the first day says plainly where the history starts: notifications
+  cleared before setup cannot be brought back by any app.
+- The "Allow restricted settings" step of the setup only shows when Android
+  actually asks for it, that is for an APK downloaded or copied onto the phone
+  on Android 13 or newer. Installed through a store, setup starts with
+  notification access.
+
 ## 1.9.0
 
 Nothing changes in what this edition does. The Play Store edition got a

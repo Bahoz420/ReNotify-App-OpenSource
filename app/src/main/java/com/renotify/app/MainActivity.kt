@@ -136,7 +136,8 @@ class MainActivity : ComponentActivity() {
                 var showSettings by remember { mutableStateOf(false) }
                 when {
                     showOnboarding -> OnboardingScreen(onFinished = {
-                        prefs.edit().putBoolean("onboarding_done", true).apply()
+                        prefs.edit().putBoolean("onboarding_done", true)
+                            .putBoolean("first_day_card", true).apply()
                         showOnboarding = false
                     })
                     showSettings -> SettingsScreen(onBack = { showSettings = false })
@@ -192,6 +193,10 @@ fun ReNotifyScreen(
     }
     var swipeHintSeen by remember {
         mutableStateOf(settingsPrefs.getBoolean("swipe_hint_seen", false))
+    }
+    // Set when the onboarding ends, so only a fresh setup sees it, see FirstDayCard.
+    var firstDayCard by remember {
+        mutableStateOf(settingsPrefs.getBoolean("first_day_card", false))
     }
     fun markSwipeHintSeen() {
         if (swipeHintSeen) return
@@ -453,6 +458,17 @@ fun ReNotifyScreen(
 
                 if (!listenerEnabled) {
                     item(key = "permission") { PermissionCard() }
+                }
+
+                if (listenerEnabled && firstDayCard && searchQuery.isEmpty() &&
+                    openedApp == null
+                ) {
+                    item(key = "first_day") {
+                        FirstDayCard(onDismiss = {
+                            firstDayCard = false
+                            settingsPrefs.edit().putBoolean("first_day_card", false).apply()
+                        })
+                    }
                 }
 
                 if (listenerEnabled && !batteryExempt && !batteryDismissed) {
@@ -1311,6 +1327,37 @@ private fun PermissionCard() {
     }
 }
 
+
+/**
+ * Shown once after setup. It says where the history starts: the listener has
+ * just copied what was in the status bar, and nothing cleared before that can
+ * come back. Most people who left again did so within a day of setting the app
+ * up, plausibly after looking for a notification they had just swiped away.
+ */
+@Composable
+private fun FirstDayCard(onDismiss: () -> Unit) {
+    val palette = LocalIosPalette.current
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(palette.card, RoundedCornerShape(12.dp))
+            .padding(16.dp)
+    ) {
+        Text(
+            stringResource(R.string.first_day_title),
+            style = IosType.headline,
+            color = palette.label
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            stringResource(R.string.first_day_body),
+            style = IosType.subhead,
+            color = palette.secondaryLabel
+        )
+        Spacer(Modifier.height(12.dp))
+        IosPillButton(stringResource(R.string.first_day_ok), filled = true, onClick = onDismiss)
+    }
+}
 
 @Composable
 private fun BatteryCard(onAllow: () -> Unit, onDismiss: () -> Unit) {

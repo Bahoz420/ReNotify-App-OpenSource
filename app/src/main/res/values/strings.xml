@@ -21,6 +21,9 @@
     <string name="empty_none_sub">New notifications will appear here automatically.</string>
     <string name="empty_noaccess_title">Access not allowed yet</string>
     <string name="empty_noaccess_sub">Please allow notification access first.</string>
+    <string name="first_day_title">Your history starts now</string>
+    <string name="first_day_body">From now on ReNotify keeps every notification, even after you swipe it away. Whatever was still in your status bar is already here. Notifications cleared before setup are gone, no app can bring them back.</string>
+    <string name="first_day_ok">Got it</string>
 
     <string name="perm_title">Notification access required</string>
     <string name="perm_body">ReNotify needs access to your notifications to build the history.</string>

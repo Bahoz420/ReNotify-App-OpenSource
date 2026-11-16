@@ -19,6 +19,9 @@
     <string name="empty_none_sub">Neue Benachrichtigungen erscheinen hier automatisch.</string>
     <string name="empty_noaccess_title">Zugriff noch nicht erlaubt</string>
     <string name="empty_noaccess_sub">Bitte erlaube zuerst den Benachrichtigungszugriff.</string>
+    <string name="first_day_title">Dein Verlauf beginnt jetzt</string>
+    <string name="first_day_body">Ab jetzt behält ReNotify jede Benachrichtigung, auch wenn du sie wegwischst. Was noch in deiner Statusleiste stand, ist schon hier. Was vor der Einrichtung weggewischt wurde, kann keine App zurückholen.</string>
+    <string name="first_day_ok">Verstanden</string>
 
     <string name="perm_title">Benachrichtigungszugriff erforderlich</string>
     <string name="perm_body">ReNotify braucht Zugriff auf deine Benachrichtigungen, um den Verlauf aufzubauen.</string>
