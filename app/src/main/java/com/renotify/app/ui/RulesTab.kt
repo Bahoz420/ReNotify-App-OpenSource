@@ -66,6 +66,9 @@ import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+/** Orange of the "Blocked" badge, for a rule the free version has paused. */
+private val PausedOrange = Color(0xFFFF9500)
+
 private fun minuteLabel(minute: Int): String =
     String.format(Locale.getDefault(), "%02d:%02d", minute / 60, minute % 60)
 
@@ -97,6 +100,10 @@ private fun scopeLabel(scope: String): String = stringResource(
 @Composable
 fun RulesContent(
     rules: List<Rule>,
+    /** Switched on, but not in effect: the free version runs one rule. */
+    pausedIds: Set<Long> = emptySet(),
+    /** Said under a paused rule. */
+    pausedNote: String = "",
     selectionMode: Boolean,
     selectedIds: Set<Long>,
     onAdd: () -> Unit,
@@ -165,6 +172,7 @@ fun RulesContent(
             rules.forEach { rule ->
                 RuleCard(
                     rule,
+                    pausedNote = if (rule.id in pausedIds) pausedNote else null,
                     selectionMode = selectionMode,
                     selected = rule.id in selectedIds,
                     onToggle = {
@@ -184,6 +192,7 @@ fun RulesContent(
 @Composable
 private fun RuleCard(
     rule: Rule,
+    pausedNote: String?,
     selectionMode: Boolean,
     selected: Boolean,
     onToggle: (Boolean) -> Unit,
@@ -224,15 +233,16 @@ private fun RuleCard(
             Text(
                 "$appPart · $modePart$timePart · ${actionLabel(rule.action)}",
                 style = IosType.subheadBold,
-                color = if (rule.enabled) palette.label else palette.secondaryLabel,
+                color = if (rule.enabled && pausedNote == null) palette.label
+                else palette.secondaryLabel,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(Modifier.height(2.dp))
             Text(
-                stringResource(R.string.rule_blocked_count, rule.matchCount),
+                pausedNote ?: stringResource(R.string.rule_blocked_count, rule.matchCount),
                 style = IosType.footnote,
-                color = palette.secondaryLabel
+                color = if (pausedNote != null) PausedOrange else palette.secondaryLabel
             )
         }
         if (!selectionMode) {

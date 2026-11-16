@@ -115,7 +115,8 @@ ReNotify is also on Google Play. That edition is built from the same code by
 Fluxera LLC and differs in what it adds around the app:
 
 - Pro is a one-time purchase through Google Play Billing; the free version
-  keeps the last 7 days of history and has a 7 day Pro trial.
+  keeps the last 7 days of history and runs one rule, and every new install
+  gets all Pro features for 14 days.
 - The free version shows a small banner for our own apps. No ad network.
 - The RevenueCat SDK runs in observer mode for revenue statistics. It contacts
   RevenueCat on every app start with a random identifier; it receives purchase

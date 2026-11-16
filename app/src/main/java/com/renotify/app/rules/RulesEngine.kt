@@ -1,6 +1,7 @@
 package com.renotify.app.rules
 
 import android.content.Context
+import com.renotify.app.FreeTier
 import com.renotify.app.data.ReNotifyDatabase
 import com.renotify.app.data.Rule
 import java.util.Calendar
@@ -45,13 +46,13 @@ object RulesEngine {
      * instruction, and the user wrote it for a reason.
      */
     fun match(context: Context, packageName: String, title: String, text: String): Rule? {
-        val active = if (loaded) rules else loadNow(context)
+        // Without Pro only the oldest switched-on rule takes effect.
+        val active = FreeTier.activeRules(if (loaded) rules else loadNow(context))
         if (active.isEmpty()) return null
         val cal = Calendar.getInstance()
         val minuteOfDay = cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE)
         val matching = active.filter { rule ->
-            rule.enabled &&
-                matchesApp(rule, packageName) &&
+            matchesApp(rule, packageName) &&
                 matchesTime(rule, minuteOfDay) &&
                 matchesKeywords(rule, haystackFor(rule, title, text))
         }

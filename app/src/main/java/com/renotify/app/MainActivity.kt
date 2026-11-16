@@ -482,6 +482,7 @@ fun ReNotifyScreen(
                     }
                 }
 
+
                 if (openedApp != null) {
                     item(key = "opened_app") {
                         OpenedAppRow(
@@ -522,8 +523,9 @@ fun ReNotifyScreen(
                     }
                 }
 
+                val nothingAtAll = notifications.isEmpty()
                 if (notifications.isEmpty()) {
-                    item(key = "empty") { EmptyState(listenerEnabled) }
+                    if (nothingAtAll) item(key = "empty") { EmptyState(listenerEnabled) }
                 } else if (showAppGroups) {
                     item(key = "apps_section") {
                         Text(
@@ -600,8 +602,11 @@ fun ReNotifyScreen(
                 item(key = "trends") { TrendsContent(trends) }
             } else if (selectedTab == 3) {
                 item(key = "rules") {
+                    val pausedNote = ""
                     RulesContent(
                         rules = rules,
+                        pausedIds = FreeTier.pausedRuleIds(rules, unlimited = hasProAccess),
+                        pausedNote = pausedNote,
                         selectionMode = selectionMode,
                         selectedIds = selectedIds,
                         onAdd = {

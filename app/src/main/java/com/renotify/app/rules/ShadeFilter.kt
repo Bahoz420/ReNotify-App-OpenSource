@@ -1,6 +1,7 @@
 package com.renotify.app.rules
 
 import android.content.Context
+import com.renotify.app.FreeTier
 
 /**
  * Allow list for the status bar: while it is on, only the apps the user picked
@@ -39,7 +40,11 @@ object ShadeFilter {
         prefs(context).edit().putStringSet(KEY_ALLOWED, packages.toSet()).apply()
     }
 
-    /** True when this app's notifications have to leave the status bar. */
+    /**
+     * True when this app's notifications have to leave the status bar. Without
+     * Pro the filter pauses; the switch and the list are kept for when it
+     * comes back.
+     */
     fun hides(context: Context, packageName: String): Boolean =
-        isEnabled(context) && packageName !in allowed(context)
+        isEnabled(context) && FreeTier.unlimited && packageName !in allowed(context)
 }

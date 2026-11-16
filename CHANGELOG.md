@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0
+
+Nothing changes in what this edition does. The Play Store edition got a
+purchase that works on the first tap and a trial that starts by itself. The
+code both editions share now asks one place, `FreeTier`, whether the limits of
+the free version apply to rules and the status bar filter; in this edition
+they never do.
+
 ## 1.8.7
 
 - New, in beta: "Real silence" in Settings. ReNotify plays the sound and

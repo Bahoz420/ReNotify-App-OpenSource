@@ -138,7 +138,8 @@ fun AppFilterSheet(onDismiss: () -> Unit, onRequirePro: () -> Unit = {}) {
                         )
                     }
                     Switch(
-                        checked = shadeEnabled,
+                        // Without Pro the filter is paused, whatever was set.
+                        checked = shadeEnabled && hasProAccess,
                         onCheckedChange = { on ->
                             if (on && !hasProAccess) {
                                 onRequirePro()
@@ -152,7 +153,7 @@ fun AppFilterSheet(onDismiss: () -> Unit, onRequirePro: () -> Unit = {}) {
                     )
                 }
                 Spacer(Modifier.height(8.dp))
-                if (shadeEnabled && allowed.isEmpty()) {
+                if (shadeEnabled && hasProAccess && allowed.isEmpty()) {
                     // Switched on with nothing allowed means the shade stays empty.
                     // Better said out loud than discovered.
                     Text(

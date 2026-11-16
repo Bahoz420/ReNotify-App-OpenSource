@@ -112,4 +112,14 @@ interface NotificationDao {
 
     @Query("SELECT COUNT(*) FROM notifications WHERE postedAt < :cutoff")
     fun observeOlderCount(cutoff: Long): Flow<Int>
+
+    /** Search hits older than [cutoff], same match as [observeAll]. */
+    @Query(
+        """SELECT COUNT(*) FROM notifications
+           WHERE (title LIKE '%' || :query || '%'
+              OR text LIKE '%' || :query || '%'
+              OR appLabel LIKE '%' || :query || '%')
+              AND postedAt < :cutoff"""
+    )
+    fun observeOlderMatchCount(query: String, cutoff: Long): Flow<Int>
 }

@@ -38,8 +38,8 @@ android {
         applicationId = "com.renotify.oss"
         minSdk = 26
         targetSdk = 36
-        versionCode = 21
-        versionName = "1.8.7"
+        versionCode = 22
+        versionName = "1.9.0"
 
         buildConfigField("String", "TELEMETRY_URL", "\"$telemetryUrl\"")
     }

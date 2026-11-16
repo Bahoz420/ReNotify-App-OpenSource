@@ -187,4 +187,5 @@
     <string name="settings_real_silence">Silenzio reale (beta)</string>
     <string name="settings_real_silence_hint">ReNotify riproduce da sé il suono e la vibrazione di ogni notifica, così una regola di silenzio agisce prima che qualcosa suoni. Le chiamate non sono mai coinvolte, e se ReNotify si ferma, Android torna a riprodurre i suoni.</string>
     <string name="settings_real_silence_waiting">Non ancora attivo: ReNotify ha bisogno dell\'accesso alle notifiche e deve essere in esecuzione.</string>
+
 </resources>
